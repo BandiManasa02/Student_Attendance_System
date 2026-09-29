@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <title>Mark Attendance</title>
+
+    <link rel="stylesheet"
+          href="{{ url_for('static', filename='style.css') }}">
+
+</head>
+
+<body>
+
+    <div class="page-box task-form-box">
+
+        <h1>Mark Attendance</h1>
+
+{% with messages = get_flashed_messages() %}
+    {% if messages %}
+        {% for message in messages %}
+            <p class="success-message">{{ message }}</p>
+        {% endfor %}
+    {% endif %}
+{% endwith %}
+
+<form action="/mark_attendance" method="POST">
+            <label>Select Student</label>
+
+            <select name="student_id" required>
+
+                <option value="">
+                    -- Select Student --
+                </option>
+
+                {% for student in students %}
+
+                <option value="{{ student.id }}">
+                    {{ student.name }} - {{ student.roll_number }}
+                </option>
+
+                {% endfor %}
+
+            </select>
+
+            <label>Attendance Date</label>
+
+            <input
+                type="date"
+                name="attendance_date"
+                required
+            >
+
+            <label>Attendance Status</label>
+
+            <select name="status" required>
+
+                <option value="">
+                    -- Select Status --
+                </option>
+
+                <option value="Present">
+                    Present
+                </option>
+
+                <option value="Absent">
+                    Absent
+                </option>
+
+            </select>
+
+            <button type="submit">
+                Save Attendance
+            </button>
+
+        </form>
+
+        <div class="page-links">
+
+            <a href="/view_attendance">
+                View Attendance
+            </a>
+
+            <a href="/dashboard">
+                Dashboard
+            </a>
+
+        </div>
+
+    </div>
+
+</body>
+
+</html>

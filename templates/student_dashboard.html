@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Student Dashboard</title>
+
+    <link rel="stylesheet"
+          href="{{ url_for('static', filename='style.css') }}">
+</head>
+
+<body>
+
+<div class="page-box">
+
+    <h1>Student Dashboard</h1>
+
+    <h2>Welcome, {{ name }}! 👋</h2>
+
+    <p class="dashboard-role">
+        You are logged in as a <strong>Student</strong>.
+    </p>
+
+    <hr>
+
+    <h2>My Summary</h2>
+
+    <!-- Dashboard Summary Cards -->
+
+    <div class="dashboard-summary">
+
+        <div class="dashboard-card">
+            <h3>Total Tasks</h3>
+            <p>{{ total_tasks }}</p>
+        </div>
+
+        <div class="dashboard-card">
+            <h3>Completed Tasks</h3>
+            <p>{{ completed_tasks }}</p>
+        </div>
+
+        <div class="dashboard-card">
+            <h3>Pending Tasks</h3>
+            <p>{{ pending_tasks }}</p>
+        </div>
+
+        <div class="dashboard-card">
+            <h3>Attendance</h3>
+            <p>{{ "%.2f"|format(attendance_percentage) }}%</p>
+        </div>
+
+    </div>
+
+    <br>
+
+    <hr>
+
+    <h2>Student Features</h2>
+
+    <a href="/my_tasks">
+        <button>My Tasks</button>
+    </a>
+
+    <br><br>
+
+    <a href="/my_attendance">
+        <button>My Attendance</button>
+    </a>
+
+    <br><br>
+
+    <a href="/logout">Logout</a>
+
+</div>
+
+</body>
+</html>

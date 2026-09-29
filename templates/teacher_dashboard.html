@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Teacher Dashboard</title>
+
+    <link rel="stylesheet"
+          href="{{ url_for('static', filename='style.css') }}">
+</head>
+
+<body>
+
+<div class="page-box">
+
+    <h1>Teacher Dashboard</h1>
+
+    <h2>Welcome, {{ name }}! 👋</h2>
+
+    <p class="dashboard-role">
+        You are logged in as a <strong>Teacher</strong>.
+    </p>
+
+    <hr>
+
+    <h2>Dashboard Summary</h2>
+
+    <!-- Teacher Summary Cards -->
+
+    <div class="dashboard-summary">
+
+        <div class="dashboard-card">
+            <h3>Total Students</h3>
+            <p>{{ total_students }}</p>
+        </div>
+
+        <div class="dashboard-card">
+            <h3>Total Tasks</h3>
+            <p>{{ total_tasks }}</p>
+        </div>
+
+        <div class="dashboard-card">
+            <h3>Attendance Records</h3>
+            <p>{{ total_attendance }}</p>
+        </div>
+
+    </div>
+
+    <br>
+
+    <hr>
+
+    <h2>Teacher Features</h2>
+
+    <a href="/manage_students">
+        <button>Manage Students</button>
+    </a>
+
+    <br><br>
+
+    <a href="/add_student">
+        <button>Add Student</button>
+    </a>
+
+    <br><br>
+
+    <a href="/manage_tasks">
+        <button>Manage Tasks</button>
+    </a>
+
+    <br><br>
+
+    <a href="/add_task">
+        <button>Assign Task</button>
+    </a>
+
+    <br><br>
+
+    <a href="/mark_attendance">
+        <button>Mark Attendance</button>
+    </a>
+
+    <br><br>
+
+    <a href="/view_attendance">
+        <button>View Attendance</button>
+    </a>
+
+    <br><br>
+
+    <a href="/logout">Logout</a>
+
+</div>
+
+</body>
+
+</html>

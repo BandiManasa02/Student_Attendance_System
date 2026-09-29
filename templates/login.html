@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Student Task & Attendance System</title>
+
+    <link rel="stylesheet"
+          href="{{ url_for('static', filename='style.css') }}">
+</head>
+
+<body>
+
+    <div class="login-page">
+
+        <!-- LEFT SIDE -->
+        <div class="login-intro">
+
+            <div class="intro-content">
+
+                <div class="logo-circle">
+                    🎓
+                </div>
+
+                <h1>
+                    Student Task &<br>
+                    Attendance System
+                </h1>
+
+                <p>
+                    A simple and smart platform to manage
+                    student tasks, attendance and academic activities.
+                </p>
+
+                <div class="feature-list">
+
+                    <div class="feature">
+                        <span>✓</span>
+                        <p>Task Management</p>
+                    </div>
+
+                    <div class="feature">
+                        <span>✓</span>
+                        <p>Attendance Tracking</p>
+                    </div>
+
+                    <div class="feature">
+                        <span>✓</span>
+                        <p>Student Management</p>
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <!-- RIGHT SIDE -->
+        <div class="login-area">
+
+            <div class="login-card">
+
+                <div class="login-heading">
+
+                    <h2>Welcome Back! 👋</h2>
+
+                    <p>
+                        Please login to continue
+                    </p>
+
+                </div>
+
+
+                {% with messages = get_flashed_messages() %}
+
+                    {% if messages %}
+
+                        {% for message in messages %}
+
+                            <p class="error">
+                                {{ message }}
+                            </p>
+
+                        {% endfor %}
+
+                    {% endif %}
+
+                {% endwith %}
+
+
+                <form method="POST" action="/login">
+
+                    <label for="email">
+                        Email Address
+                    </label>
+
+                    <input
+                        type="email"
+                        id="email"
+                        name="email"
+                        placeholder="Enter your email"
+                        required
+                    >
+
+
+                    <label for="password">
+                        Password
+                    </label>
+
+                    <input
+                        type="password"
+                        id="password"
+                        name="password"
+                        placeholder="Enter your password"
+                        required
+                    >
+
+
+                    <button type="submit">
+                        Login
+                    </button>
+
+                </form>
+
+
+                <p class="login-info">
+                    🔒 Secure login for students and teachers
+                </p>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</body>
+
+</html>

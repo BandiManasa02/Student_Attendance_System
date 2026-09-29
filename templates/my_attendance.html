@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <title>My Attendance</title>
+
+    <link rel="stylesheet"
+          href="{{ url_for('static', filename='style.css') }}">
+
+</head>
+
+<body>
+
+    <div class="page-box">
+
+        <h1>My Attendance</h1>
+
+        <!-- Attendance Summary -->
+
+        <h2>Attendance Summary</h2>
+
+        <div class="attendance-summary">
+
+            <div class="summary-box">
+                <h3>Total Classes</h3>
+                <p>{{ total_classes }}</p>
+            </div>
+
+            <div class="summary-box">
+                <h3>Present</h3>
+                <p>{{ present_count }}</p>
+            </div>
+
+            <div class="summary-box">
+                <h3>Absent</h3>
+                <p>{{ absent_count }}</p>
+            </div>
+
+            <div class="summary-box">
+                <h3>Attendance</h3>
+                <p>{{ "%.2f"|format(attendance_percentage) }}%</p>
+            </div>
+
+        </div>
+
+        <br><br>
+
+        <!-- Attendance Records -->
+
+        <h2>Attendance Records</h2>
+
+        {% if attendance %}
+
+        <div class="table-container">
+
+            <table>
+
+                <thead>
+
+                    <tr>
+                        <th>Date</th>
+                        <th>Status</th>
+                    </tr>
+
+                </thead>
+
+                <tbody>
+
+                    {% for record in attendance %}
+
+                    <tr>
+
+                        <td>
+                            {{ record.attendance_date }}
+                        </td>
+
+                        <td>
+                            {{ record.status }}
+                        </td>
+
+                    </tr>
+
+                    {% endfor %}
+
+                </tbody>
+
+            </table>
+
+        </div>
+
+        {% else %}
+
+        <p class="no-students">
+            No attendance records found.
+        </p>
+
+        {% endif %}
+
+        <div class="page-links">
+
+            <a href="/dashboard">
+                Back to Dashboard
+            </a>
+
+            <a href="/logout">
+                Logout
+            </a>
+
+        </div>
+
+    </div>
+
+</body>
+
+</html>

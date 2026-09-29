@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <title>Assign Task</title>
+
+    <link rel="stylesheet"
+          href="{{ url_for('static', filename='style.css') }}">
+
+</head>
+
+<body>
+
+    <div class="page-box task-form-box">
+
+        <h1>Assign Task</h1>
+
+{% with messages = get_flashed_messages() %}
+    {% if messages %}
+        {% for message in messages %}
+            <p class="success-message">{{ message }}</p>
+        {% endfor %}
+    {% endif %}
+{% endwith %}
+
+<form action="/add_task" method="POST">
+            <label>Select Student</label>
+
+            <select name="student_id" required>
+
+                <option value="">
+                    -- Select Student --
+                </option>
+
+                {% for student in students %}
+
+                <option value="{{ student.id }}">
+                    {{ student.name }} - {{ student.roll_number }}
+                </option>
+
+                {% endfor %}
+
+            </select>
+
+
+            <label>Task Name</label>
+
+            <input
+                type="text"
+                name="task_name"
+                placeholder="Enter task name"
+                required
+            >
+
+
+            <label>Description</label>
+
+            <textarea
+                name="description"
+                placeholder="Enter task description"
+                rows="5"
+                required
+            ></textarea>
+
+
+            <label>Assigned Date</label>
+
+            <input
+                type="date"
+                name="assigned_date"
+                required
+            >
+
+
+            <label>Due Date</label>
+
+            <input
+                type="date"
+                name="due_date"
+                required
+            >
+
+
+            <button type="submit">
+                Assign Task
+            </button>
+
+        </form>
+
+        <div class="page-links">
+
+            <a href="/manage_tasks">
+                Back to Tasks
+            </a>
+
+            <a href="/dashboard">
+                Dashboard
+            </a>
+
+        </div>
+
+    </div>
+
+</body>
+
+</html>

@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <title>View Attendance</title>
+
+    <link rel="stylesheet"
+          href="{{ url_for('static', filename='style.css') }}">
+
+</head>
+
+<body>
+
+    <div class="page-box">
+
+        <h1>Attendance Records</h1>
+        {% with messages = get_flashed_messages() %}
+    {% if messages %}
+        {% for message in messages %}
+            <p class="success">{{ message }}</p>
+        {% endfor %}
+    {% endif %}
+{% endwith %}
+
+        {% if attendance %}
+
+        <div class="table-container">
+
+            <table>
+
+                <thead>
+
+                    <tr>
+                        <th>Student</th>
+                        <th>Roll Number</th>
+                        <th>Date</th>
+                        <th>Status</th>
+                    </tr>
+
+                </thead>
+
+                <tbody>
+
+                    {% for record in attendance %}
+
+                    <tr>
+
+                        <td>{{ record.student_name }}</td>
+
+                        <td>{{ record.roll_number }}</td>
+
+                        <td>{{ record.attendance_date }}</td>
+
+                        <td>{{ record.status }}</td>
+
+                    </tr>
+
+                    {% endfor %}
+
+                </tbody>
+
+            </table>
+
+        </div>
+
+        {% else %}
+
+        <p class="no-students">
+            No attendance records found.
+        </p>
+
+        {% endif %}
+
+        <div class="page-links">
+
+            <a href="/mark_attendance">
+                Mark Attendance
+            </a>
+
+            <a href="/dashboard">
+                Dashboard
+            </a>
+
+        </div>
+
+    </div>
+
+</body>
+
+</html>

@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <title>Add Student</title>
+
+    <link rel="stylesheet"
+          href="{{ url_for('static', filename='style.css') }}">
+
+</head>
+
+<body>
+
+    <div class="login-box">
+
+        <h1>Add Student</h1>
+
+{% with messages = get_flashed_messages() %}
+    {% if messages %}
+        {% for message in messages %}
+            <p class="success-message">{{ message }}</p>
+        {% endfor %}
+    {% endif %}
+{% endwith %}
+
+<br>
+
+<form action="/add_student" method="POST">
+            <label>Student Name</label>
+
+            <input type="text"
+                   name="name"
+                   placeholder="Enter student name"
+                   required>
+
+            <label>Email</label>
+
+            <input type="email"
+                   name="email"
+                   placeholder="Enter student email"
+                   required>
+
+            <label>Password</label>
+
+            <input type="password"
+                   name="password"
+                   placeholder="Create student password"
+                   required>
+
+            <label>Roll Number</label>
+
+            <input type="text"
+                   name="roll_number"
+                   placeholder="Enter roll number"
+                   required>
+
+            <label>Course</label>
+
+            <input type="text"
+                   name="course"
+                   placeholder="Example: B.Sc Software Engineering"
+                   required>
+
+            <label>Year</label>
+
+            <input type="number"
+                   name="year"
+                   placeholder="Example: 2"
+                   min="1"
+                   max="4"
+                   required>
+
+            <label>Section</label>
+
+            <input type="text"
+                   name="section"
+                   placeholder="Example: A"
+                   required>
+
+            <button type="submit">
+                Add Student
+            </button>
+
+        </form>
+
+        <br>
+
+        <a href="/manage_students">
+            Back to Students
+        </a>
+
+    </div>
+
+</body>
+
+</html>
