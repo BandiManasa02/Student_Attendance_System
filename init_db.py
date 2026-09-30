@@ -1,14 +1,22 @@
 import mysql.connector
 from werkzeug.security import generate_password_hash
-MYSQL_PASSWORD = "Manasa_0207"
+from dotenv import load_dotenv
+import os
+
+load_dotenv()
+
 connection = mysql.connector.connect(
-    host="localhost",
-    user="root",
-    password=MYSQL_PASSWORD
+    host=os.getenv("MYSQL_HOST"),
+    port=int(os.getenv("MYSQL_PORT")),
+    user=os.getenv("MYSQL_USER"),
+    password=os.getenv("MYSQL_PASSWORD"),
+    database=os.getenv("MYSQL_DATABASE"),
+    ssl_disabled=False
 )
+
 cursor = connection.cursor()
-cursor.execute("CREATE DATABASE IF NOT EXISTS student_system")
-cursor.execute("USE student_system")
+
+
 cursor.execute("""
 CREATE TABLE IF NOT EXISTS users (
     id INT AUTO_INCREMENT PRIMARY KEY,

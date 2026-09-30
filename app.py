@@ -8,10 +8,12 @@ app = Flask(__name__)
 app.secret_key = "student-task-attendance-secret-key"
 def get_database_connection():
     connection = mysql.connector.connect(
-        host="localhost",
-        user="root",
-        password=os.getenv("Manasa_0207"),
-        database="student_system"
+        host=os.getenv("MYSQL_HOST"),
+        port=int(os.getenv("MYSQL_PORT")),
+        user=os.getenv("MYSQL_USER"),
+        password=os.getenv("MYSQL_PASSWORD"),
+        database=os.getenv("MYSQL_DATABASE"),
+        ssl_disabled=False
     )
     return connection
 @app.route("/")
